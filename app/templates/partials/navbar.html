@@ -1,0 +1,122 @@
+{% load i18n %}
+{% load static %}
+{% load change_lang %}
+
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Youtube Downloader</h4>
+      <span class="text-muted">Télécharger vos vidéos / musiques directement en entrant son url.</span>
+    </div>
+</div>
+
+<!-- {{ navbar.visitor }}
+{{ navbar.queue }}
+ -->
+
+<nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+
+        
+
+        <div class="dropdown">
+            <a class="navbar-brand dropdown-toggle fs-6" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user mx-2"></i>
+                {{ navbar.visitor.id }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+                <li><a class="dropdown-item" href="{% url 'home' %}">
+                    <i class="fa-solid fa-download"></i>
+                    {% trans 'Downloads' %}
+                    <span class="badge rounded-pill fs-6 text-secondary"></span>
+                </a></li>
+
+
+                <li><a class="dropdown-item" href="{% url 'history' %}">
+                    <i class="fa-solid fa-list"></i>
+                    {% trans 'History' %}
+                    <span class="badge rounded-pill fs-6 text-secondary">{{ visitor.downloads.length }}</span>
+                </a></li>
+
+                <hr>
+
+                <li><a class="dropdown-item" href="{% url 'logout' %}">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    {% trans 'Sign out' %}
+                </a></li>
+
+
+            </ul>
+        </div>
+
+
+
+
+
+<!--         <div class="collapse navbar-collapse justify-content-end">
+             {% url 'home' as home %}
+             {% url 'top10' as top10 %}
+             {% url 'statistique' as statistique %}
+             {% url 'history' as history %}
+             {% url 'facials' as facials %}
+             {% url 'vocals' as vocals %}
+             {% url 'login' as login %}
+            <ul class="navbar-nav fw-bold text-info">
+                <li class="nav-item mx-3">
+                    <a class="nav-link {% if request.path == home %}active{% endif %}" href="{%url 'home' %}">{% trans 'Downloads' %}</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link {% if request.path == top10 %}active{% endif %}" href="{%url 'top10' %}">{% trans 'Top 10 Downloads' %}</a>
+                </li>
+                {% if request.path == history %}
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" href="{%url 'history' %}">{% trans 'History' %}</a>
+                </li>
+                {% endif %}
+                {% if request.path == facials %}
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" href="{%url 'facials' %}">{% trans 'Face learning' %}</a>
+                </li>
+                {% endif %}
+                {% if request.path == vocals %}
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" href="{%url 'vocals' %}">{% trans 'Vocal learning' %}</a>
+                </li>
+                {% endif %}
+                {% if request.path == login %}
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" href="{%url 'login' %}">{% trans 'Login' %}</a>
+                </li>
+                {% endif %}
+            </ul> -->
+
+            <div class="dropstart">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                <a class="navbar-brand dropdown-toggle fs-6" href="#" id="navbarDropdownLanguage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="rounded ms-2" width="35px" src="{% static 'flags/4x3/'|add:request.LANGUAGE_CODE|add:'.svg' %}" alt="{{ request.LANGUAGE_CODE }}" />
+                </a>
+
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguage">
+
+                    {% for language in languages %}
+                    <li><a class="dropdown-item {% if language.code == request.LANGUAGE_CODE %}active{% endif %}" href="{% url 'change_lang' language.code %}">
+                        <img class="rounded ms-0 me-4" width="25px" src="{% static 'flags/4x3/'|add:language.code|add:'.svg' %}" alt="{{ language.code }}" />
+                        {{ language.name_translated }}
+                    </a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+
+        
+
+
+
+
+    </div>
+</nav>

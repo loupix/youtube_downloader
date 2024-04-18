@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block header %}
+
+<div class="container p-5 mt-1 text-center">
+    <div class="card w-100 border-0 bg-primary text-white">                    
+        <div class="row g-0">
+            {% if video %}
+                {% if video.get_website_display == "Youtube" %}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.url_id }}" title="{{ video.title | safe}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% elif video.get_website_display == "Dailymotion" %}
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                    <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" src="https://www.dailymotion.com/embed/video/{{ video.url_id }}" width="100%" height="100%" allowfullscreen title="{{ video.title | safe}}" allow="autoplay"> </iframe>
+                </div>
+                {% endif %}
+            {% elif error %}
+            <p class="text-danger">Error {{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block main %}
+
+
+<div class="container p-3 mt-1 text-start" itemscope itemtype="https://schema.org/VideoObject">
+
+
+    <div class="g-0 card-text my-2">
+            <div id="carouselFrames" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for f_list in frame_list %}
+                    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                        <div class="row mx-3">
+                            {% for frame in f_list %}
+                            <div class="col-2">
+                                <img itemprop="thumbnail" src="data:image/png;base64, {{ frame.content }}" class="img-fluid rounded" width="{{ frame.width }}" height="{{ frame.height }}" alt="{{ video.title | safe }}" >
+                                <div>
+                                    <small class="text-white mt-n1 position-absolute">{{ frame.time_at }}</small>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="card w-100 border-0 bg-white mt-2">
+        <div class="card-header" ng-model="more_desc">
+            <p class="h5 card-title" itemprop="name">{{ video.title | safe }}</p>
+            <p class="card-title">
+                <small class="text-muted" itemprop="datePublished" content="{{ video.published_at|date:'c' }}">
+                    {{ video.published_at|date }}
+                </small>
+                <small class="text-muted ms-3" itemprop="duration" content="PT{{ video.duration|time:'H\Hi\Ms\S' }}">
+                    {{ video.duration|time:"f" }}
+                </small>
+            </p>
+
+
+            {% with video.description|safe|length as len_desc %}
+
+            {% if len_desc >= 560 %}
+            <div class="mt-2" ng-init="more_desc=false" ng-hide="more_desc">
+                {{ video.description|safe|truncatechars:560|linebreaks }}
+            </div>
+
+            <div class="d-grid gap-2 opacity-75">
+                <button type="button" class="btn btn-outline-secondary btn-md border-0 border-top text-center" ng-click="more_desc=true" ng-hide="more_desc">
+                    {% trans "more desc" %}
+                </button>
+            </div>
+
+            <div class="mt-2" ng-show="more_desc" itemprop="description">
+                {{ video.description|safe|linebreaks }}
+            </div>
+
+            <div class="d-grid gap-2 opacity-75">
+                <button type="button" class="btn btn-outline-secondary btn-md border-0 border-top text-center" ng-click="more_desc=false" ng-show="more_desc">
+                    {% trans "less desc" %}
+                </button>
+            </div>
+
+            {% else %}
+            <p class="mt-2" itemprop="description">{{ video.description|safe|linebreaks }}</p>
+            {% endif %}
+            {% endwith %}
+
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock %}

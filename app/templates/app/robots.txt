@@ -1,0 +1,31 @@
+Sitemap: https://youtube.loicdaniel.fr/sitemap.xml
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: AdsBot-Google
+Disallow:
+
+User-agent: Googlebot-Image
+Disallow:
+
+User-agent: bingbot
+Disallow:
+
+User-agent: msnbot
+Disallow:
+
+User-agent: Slurp
+Disallow:
+
+User-agent: Twitterbot
+Disallow:
+
+User-agent: Facebot
+Disallow:
+
+User-agent: facebookexternalhit
+Disallow:
+
+User-agent: *
+Disallow: /

@@ -1,0 +1,261 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-03 16:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: account/templates/forgot.html:9 account/templates/login.html:11
+#: account/templates/login.html:36 account/templates/login.html:54
+#: app/templates/partials/navbar.html:89
+msgid "Login"
+msgstr "Connexion"
+
+#: account/templates/forgot.html:9 account/templates/login.html:11
+#: account/templates/login.html:69 account/templates/login.html:87
+#: account/templates/register.html:12 account/templates/register.html:46
+msgid "Registration"
+msgstr "Inscription"
+
+#: account/templates/login.html:111 app/templates/pages/home.html:347
+msgid "Copy then paste your youtube link"
+msgstr "Copiez puis collez votre lien youtube"
+
+#: account/templates/login.html:120 app/templates/pages/home.html:356
+msgid "Wait while we prepare the file"
+msgstr "Patientez pendant que nous préparons le fichier"
+
+#: account/templates/login.html:129 app/templates/pages/home.html:365
+msgid "Download the file to your hard drive"
+msgstr "Téléchargez le fichier sur votre disque dur"
+
+#: app/templates/pages/historique.html:11
+msgid "Download history"
+msgstr "Historique"
+
+#: app/templates/pages/historique.html:49
+msgid "Deleted"
+msgstr "Supprimé"
+
+#: app/templates/pages/historique.html:57 app/templates/pages/home.html:208
+#: app/templates/pages/home.html:448
+msgid "Processing"
+msgstr "Traintement en cours"
+
+#: app/templates/pages/historique.html:66 app/templates/pages/home.html:468
+#: app/templates/pages/home.html:602 app/templates/pages/top10.html:148
+msgid "Download"
+msgstr "Télécharger"
+
+#: app/templates/pages/home.html:32
+msgid "Your url is too short"
+msgstr "Votre url est trop cours"
+
+#: app/templates/pages/home.html:33
+msgid "Your url is not valid"
+msgstr "Votre url n'est pas valide"
+
+#: app/templates/pages/home.html:34
+msgid "Your video is not found"
+msgstr "La vidéo n'a pas été trouvé"
+
+#: app/templates/pages/home.html:119
+msgid "login"
+msgstr "connexion"
+
+#: app/templates/pages/home.html:119
+msgid "registration"
+msgstr "inscription"
+
+#: app/templates/pages/home.html:122
+msgid "18+"
+msgstr ""
+
+#: app/templates/pages/home.html:171
+msgid "Searching"
+msgstr "Recherche en cours"
+
+#: app/templates/pages/home.html:217 app/templates/pages/home.html:610
+#: app/templates/pages/top10.html:156
+msgid "Video"
+msgstr "Vidéo"
+
+#: app/templates/pages/home.html:240 app/templates/pages/home.html:631
+#: app/templates/pages/top10.html:161
+msgid "Audio"
+msgstr "Audio"
+
+#: app/templates/pages/home.html:306
+msgid "loading"
+msgstr "chargement"
+
+#: app/templates/pages/home.html:444 app/templates/pages/home.html:464
+msgid "Loading"
+msgstr "Chargement en cours"
+
+#: app/templates/pages/home.html:453
+msgid "Retrieve in"
+msgstr "Re chargement dans"
+
+#: app/templates/pages/home.html:514
+msgid "last downloaded"
+msgstr "Derniers téléchargements"
+
+#: app/templates/pages/home.html:519
+msgid "last published"
+msgstr "Les plus récents"
+
+#: app/templates/pages/home.html:524
+msgid "most downloaded"
+msgstr "Les plus téléchargés"
+
+#: app/templates/pages/home.html:529
+msgid "most views"
+msgstr "Les plus vues"
+
+#: app/templates/pages/statistique.html:10
+msgid "Downloads statistics"
+msgstr "Statistiques des téléchargements"
+
+#: app/templates/pages/top10.html:12 app/templates/partials/navbar.html:70
+msgid "Top 10 Downloads"
+msgstr "10 meilleurs téléchargements"
+
+#: app/templates/pages/vocals.html:11
+msgid "Vocal Recognition"
+msgstr "Reconnaissance vocale"
+
+#: app/templates/partials/navbar.html:31 app/templates/partials/navbar.html:67
+msgid "Downloads"
+msgstr "Téléchargements"
+
+#: app/templates/partials/navbar.html:38 app/templates/partials/navbar.html:74
+msgid "History"
+msgstr "Historique"
+
+#: app/templates/partials/navbar.html:46
+msgid "Sign out"
+msgstr "Déconnexion"
+
+#: app/templates/partials/navbar.html:79
+msgid "Face learning"
+msgstr "Reconnaissance faciale"
+
+#: app/templates/partials/navbar.html:84
+msgid "Vocal learning"
+msgstr "Reconnaissance vocale"
+
+#: facials/templates/index.html:12
+msgid "Face Learning"
+msgstr "Reconnaissance faciale"
+
+#: youtubeDownload/settings.py:314
+msgid "English"
+msgstr "Anglais"
+
+#: youtubeDownload/settings.py:315
+msgid "Russian"
+msgstr "Russe"
+
+#: youtubeDownload/settings.py:316
+msgid "French"
+msgstr "Français"
+
+#: youtubeDownload/settings.py:317
+msgid "German"
+msgstr "Allemand"
+
+#: youtubeDownload/settings.py:318
+msgid "Spanish"
+msgstr "Espagnol"
+
+#: youtubeDownload/settings.py:319
+msgid "Italian"
+msgstr "Italien"
+
+#~ msgid "Error: invalid input"
+#~ msgstr "Erreur: input invalide"
+
+#~ msgid "Press any key to continue..."
+#~ msgstr "Appuyez sur n'importe quelle touche pour continuer"
+
+#, fuzzy
+#~| msgid "History"
+#~ msgid "directory"
+#~ msgstr "Historique"
+
+#~ msgid "Site Maps"
+#~ msgstr "Plans du site"
+
+#~ msgid "Static Files"
+#~ msgstr "Fichiers statiques"
+
+#~ msgid "Syndication"
+#~ msgstr "syndication"
+
+#~ msgid "That page number is not an integer"
+#~ msgstr "Ce numéro de page n'est pas un entier"
+
+#~ msgid "That page number is less than 1"
+#~ msgstr "Ce numéro de page est inférieur à 1"
+
+#~ msgid "That page contains no results"
+#~ msgstr "Cette page ne contient aucun résultat"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Entrez une valeur valide."
+
+#~ msgid "Enter a valid URL."
+#~ msgstr "Entrez une URL valide."
+
+#~ msgid "Enter a valid integer."
+#~ msgstr "Entrez un entier valide."
+
+#~ msgid "Enter a valid email address."
+#~ msgstr "Entrez une adresse mail valide."
+
+#~ msgid "Enter only digits separated by commas."
+#~ msgstr "Entrez uniquement des chiffres séparés par des virgules."
+
+#~ msgid "Null characters are not allowed."
+#~ msgstr "Les caractères nuls ne sont pas autorisés."
+
+#~ msgid "Duration"
+#~ msgstr "Durée"
+
+#~ msgid "Email address"
+#~ msgstr "Adresse e-mail"
+
+#~ msgid "File path"
+#~ msgstr "Chemin du fichier"
+
+#~ msgid "Enter a valid date."
+#~ msgstr "Entrez une date valide."
+
+#~ msgid "Enter a valid time."
+#~ msgstr "Saisissez une heure valide."
+
+#~ msgid "Enter a valid date/time."
+#~ msgstr "Entrez une date/heure valide."
+
+#~ msgid "Percent"
+#~ msgstr "Pourcent"
+
+#~ msgid "Speed"
+#~ msgstr "Vitesse"
+
+#~ msgid "Site statistics"
+#~ msgstr "Statistiques du site"

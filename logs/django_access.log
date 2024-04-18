@@ -1,0 +1,7 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 14, 2022 - 23:03:41
+Django version 4.1, using settings 'youtubeDownload.settings'
+Starting ASGI/Channels version 3.0.5 development server at http://0.0.0.0:8080/
+Quit the server with CONTROL-C.

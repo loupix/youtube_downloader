@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block header %}
+
+<div class="container p-5 mt-1 text-center">
+    <div class="card w-100 border-0 bg-primary text-white">                    
+        <div class="row g-0">
+            Video {{ video }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block main %}
+
+
+<div class="container p-5 mt-1 text-center">
+    <div class="card w-100 border-0 bg-primary text-white">                    
+        <div class="row g-0">
+            <div class="col-md-4 my-3">
+                <img ng-src="data:image/png;base64, {{ video.thumbnails.1.content }}" class="img-fluid rounded" width="{{ video.thumbnails.1.width }}" height="{{ video.thumbnails.1.height }}" alt="{{ video.title }}" >
+            </div>
+            <div class="col-md-8">
+                <div class="card-body text-start">
+                    <h2 class="card-title">{{ video.title }}</h2>
+                    <p class="card-text" >{{ video.description }}</p>
+                    <p class="card-text"><small class="text-muted">Video created</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

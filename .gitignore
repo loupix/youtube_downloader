@@ -1,0 +1,14 @@
+sftp-config.json
+sftp-config_alt.json
+node_modules
+youtube_dl.sqlite3
+youtube.service
+__pycache__
+migrations
+env
+
+youtubeDownload/settings.py
+
+app/resources/static/components
+app/static/components
+app/old_libraries

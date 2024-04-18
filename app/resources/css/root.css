@@ -1,0 +1,49 @@
+:root{
+
+	--bs-white: #f4ecdc;
+	--bs-white-rgb: 254,242,220;
+
+	--bs-primary: #132965;
+	--bs-primary-rgb: 19,41,101;
+
+	--bs-secondary: #ebe2db;
+	--bs-secondary-rgb: 235,226,219;
+
+	--bs-info: #4765a8;
+	--bs-info-rgb: 71,101,168;
+
+	--bs-success: #4765a8;
+	--bs-success-rgb: 71,101,168;
+
+	--bs-light: #83a2cc;
+	--bs-light-rgb: 131,162,204;
+
+	--bs-list-group-active-bg: #132965;
+	--bs-list-group-active-bg-rgb: 19,41,101;
+
+	--bs-list-group-active-border-color: #132965;
+	--bs-list-group-active-border-color-rgb: 19,41,101;
+
+	--youtube-color:#ff0000;
+	--youtube-head-color:#ff0000;
+	--youtube-bg-color:#282828;
+
+	--dailymotion-color:#00d2f3;
+	--dailymotion-head-color:#00d2f3;
+	--dailymotion-bg-color:#00aaff;
+
+	--vimeo-color:#162221;
+	--vimeo-head-color:#00d2f3;
+	--vimeo-bg-color:#1ab7ea;	
+
+	--facebook-color:#737373;
+	--facebook-head-color:#00d2f3;
+	--facebook-bg-color:#1877f2;
+
+	--instagram-color:#bcced6;
+	--instagram-head-color:#e1306c;
+	--instagram-bg-color:#f56040;
+
+	--odnoklassniki-color:#ed812b;
+	--odnoklassniki-bg-color:#FFA500;
+}

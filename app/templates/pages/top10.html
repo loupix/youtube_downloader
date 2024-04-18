@@ -1,0 +1,200 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load range %}
+{% load static %}
+
+{% block header %}
+
+
+
+<div class="container p-5 mt-1 text-center">
+    <p class="my-3 h2 fs-4">{% trans 'Top 10 Downloads' %}</p>
+
+
+    <div id="carouselLoading" class="carousel slide" data-bs-ride="carousel" ng-show="onLoading.top">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+
+                <div class="card w-100 border-0 bg-primary">                    
+                    <div class="row g-0">
+                        <div class="col-md-4 my-3">
+                            <img ng-src="{% static 'Color_gray.svg' %}" class="img-fluid rounded" width="" height="" alt="Loading">
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="card-body text-start">
+                                <h2 class="card-title bg-secondary">&nbsp;</h2>
+                                <p class="card-text bg-secondary mt-4">&nbsp;</p>
+                                <p class="card-text bg-secondary">&nbsp;</p>
+<!--                                 <p class="card-text"><small class="text-muted bg-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></p>
+ -->                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="carouselTop" class="carousel slide" data-bs-ride="carousel" ng-hide="onLoading.top">
+
+        <div class="carousel-inner">
+
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselTop" data-bs-slide-to="{[{ $index }]}" ng-class="{active: 0 == $index }" aria-label="Slide {[{ $index }]} " ng-repeat="video in topVideos"></button>
+            </div>
+
+
+            <div ng-class="{active: $index == 0 }" class="carousel-item" ng-repeat="video in topVideos">
+
+                <div class="card w-100 border-0 bg-primary">                    
+                    <div class="row g-0">
+                        <div class="col-md-4 my-3">
+                            <img ng-src="data:image/png;base64, {[{ video.thumbnails[1].content }]}" class="img-fluid rounded" width="{[{ video.thumbnails[1].width }]}" height="{[{ video.thumbnails[1].height }]}" alt="{[{ video.title }]}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body text-start">
+                                <h2 class="card-title" ng-bind-html="video.title | unsafe"></h2>
+                                <p class="card-text" >{[{ video.description | limitTo: 350 }]}{[{video.description.length > 350 ? '...' : ''}]}</p>
+                                <p class="card-text"><small class="text-muted">{[{ video.created_at | date : "d MMM, y" }]}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block main %}
+
+
+<div class="container py-4 h-100">
+
+    <div class="row" ng-show="onLoading.list">
+        {% for value in nTemp %}
+        <div class="col-md-4">
+            <div class="card my-3">
+                <div class="card-header">
+                    <span class="float-end badge rounded-pill bg-secondary">&nbsp;</span>
+                    <p class="h5 fw-bold bg-secondary">&nbsp;</p>
+                </div>
+                <div class="row g-0">
+                    <div class="col-md-4 text-center my-1">
+                        <img ng-src="{% static 'Color_gray.svg' %}" class="img-fluid rounded" width="" height="" alt="Loading">
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="card-text row">
+                                <div class="col-md-12">
+                                    <p class="h5 card-title bg-secondary">
+                                        <a class="text-black" target="_blank" href="#">&nbsp;</a>
+                                    </p>
+
+                                    <p class="card-text fs-6 bg-secondary">
+                                        <small class="text-muted ms-2">&nbsp;</small>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="row" ng-hide="onLoading.list">
+
+        <div class="col-md-4" ng-repeat="video in videos">
+            <div class="card my-3">
+                <div class="card-header">
+                    <span class="float-end badge rounded-pill bg-info">{[{ video.total }]}</span>
+                    <p class="h5 fw-bold">{[{ video.channel.title }]}</p>
+                </div>
+                <div class="row g-0">
+                    <div class="col-md-4 text-center my-1">
+                        <img ng-src="data:image/png;base64, {[{ video.thumbnails[0].content }]}" class="img-fluid rounded" width="{[{ video.thumbnails[0].width }]}" height="{[{ video.thumbnails[0].height }]}" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="card-text row">
+                                <div class="col-md-12">
+                                    <p class="h5 card-title">
+                                        <a class="text-black" target="_blank" href="v/{[{ video.youtube_id }]}">{[{ video.title }]}</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <div class="d-grid gap-2" ng-hide="video.download">
+                                            <button type="button" ng-class="{disabled:video.downloaded}" class="btn btn-outline-primary btn-md" ng-click="video.download=true">
+                                                <i class="fa-solid fa-download"></i>
+                                                {% trans 'Download' %}
+                                            </button>
+                                        </div>
+
+                                        <div class="btn-group" ng-show="video.download">
+                                            <button type="button" class="btn btn-outline-primary btn-md"
+                                                type="button" ng-click="addVideo(video)">
+                                                    <i class="fa-solid fa-video mx-2"></i>
+                                                    {% trans 'Video' %}
+                                            </button>
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                type="button" ng-click="addAudio(video)">
+                                                    <i class="fa-solid fa-headphones mx-2"></i>
+                                                    {% trans 'Audio' %}
+                                            </button>
+                                        </div>
+                                    </p>
+
+                                    <p class="card-text fs-6">
+                                        <i class="fa-regular fa-clock"></i>
+                                        {[{ video.duration }]}
+                                        <small class="text-muted ms-2">{[{ video.created_at | date : "d MMM, y" }]}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+</div>
+
+{% endblock %}

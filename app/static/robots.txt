@@ -1,0 +1,4 @@
+User-agent: *
+allow: /
+
+Sitemap: https://youtube.loicdaniel.fr/sitemap.xml

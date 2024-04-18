@@ -1,0 +1,16 @@
+ 
+ -------------- celery@serveur-2 v5.2.7 (dawn-chorus)
+--- ***** ----- 
+-- ******* ---- Linux-5.15.0-47-generic-x86_64-with-glibc2.35 2022-09-13 15:37:00
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         youtubeDownload:0x7f9a887402e0
+- ** ---------- .> transport:   sqla+mysql://pi:**@node5/youtube_dl
+- ** ---------- .> results:     mysql+mysqldb://pi:**@node5/youtube_dl
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+

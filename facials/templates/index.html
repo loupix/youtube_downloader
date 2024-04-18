@@ -1,0 +1,281 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% load static %}
+
+
+
+{% block header %}
+
+
+
+<div class="container p-5 mt-1 text-center">
+    <h1 class="my-3">{% trans 'Face Learning' %}</h1>
+</div>
+
+
+
+
+<div class="modal fade" id="modalGroups" tabindex="-1" aria-labelledby="modalGroups" aria-hidden="true" ng-cloak>
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-primary bg-gradient">
+                <h5 class="modal-title text-white">Groupes de tags</h5>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <script type="text/ng-template" id="modalTemplate.html">
+                <a class="text-black m-2">
+                    <span class="my-2" ng-bind-html="match.label | uibTypeaheadHighlight:query.value"></span>
+                </a>
+                </script>
+                <form class="form-search">
+                    <input class="form-control form-control-lg" placeholder="Add Groups" ng-model="selectedGroup" ng-keypress="onNewGroup($event)"
+                    uib-typeahead="t.value for t in groups | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-on-select="onSelectGroup()" typeahead-template-url="modalTemplate.html" >
+                </form>
+
+                <div class="mt-2">
+                    <span class="badge rounded-pill m-1" 
+                        ng-repeat="group in groups" 
+                        ng-class="{'bg-danger':isCurrentGroup(group), 'bg-warning':!isCurrentGroup(group)}"
+                        >
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="pe-2" ng-click="setCurrentGroup(group)">{[{ group.value }]}</span>
+                            <i ng-click="onRemoveGroup(group)" class="fa fa-times"></i>
+                        </div>
+                    </span>
+                </div>
+
+                <hr class="my-2" />
+
+                <div>
+                    <span class="badge rounded-pill m-1" 
+                        ng-repeat="tag in tags" 
+                        ng-class="{'bg-primary':tagInCurrentGroup(tag), 'bg-light':!tagInCurrentGroup( tag)}"
+                        >
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="pe-2" ng-click="setTagGroup(tag)">{[{ tag.value }]}</span>
+                            <i ng-click="onRemoveTag(tag)" class="fa fa-times"></i>
+                        </div>
+                    </span>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-4 col-md-7">
+            <div class="my-2">
+                <script type="text/ng-template" id="tagsTemplate.html">
+                <a class="text-black m-2">
+                    <span class="my-2" ng-bind-html="match.label | uibTypeaheadHighlight:query.value"></span>
+                </a>
+                </script>
+                <form class="form-search">
+                    <div class="input-group">
+                        <input class="form-control form-control-lg" placeholder="Add Tags" ng-model="selectedTag" ng-keypress="onNewTag($event)" uib-typeahead="t.value for t in tags | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-on-select="onSelectTag()" typeahead-template-url="tagsTemplate.html" >
+                        <span class="input-group-text bg-info border-info text-white" ng-click="openModalGroups()">
+                            <i class="fa-solid fa-gears"></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 mt-3">
+
+            <div class="d-grid gap-2" ng-hide="video.download">
+                <button type="button" class="btn btn-outline-secondary btn-md text-center" ng-click="previousVideos()" ng-hide="videos.previous.length==0">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </button>
+            </div>
+
+            <div class="list-group overflow-auto">
+                {% for video in body.videos %}
+                {% if forloop.counter <= 3 %}
+                <a class="list-group-item list-group-item-action my-1" ng-show="load_videos">
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1 bg-secondary w-100">&nbsp</p>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4 text-center my-1">
+                            <img ng-src="{% static 'Color_gray.svg' %}" class="img-fluid rounded" width="" height="" alt="Loading">
+                        </div>
+                        <div class="col-md-8 ps-4">
+                            <p class="mb-0 w-100"><small class="bg-secondary">&nbsp;</small></p>
+                            <p class="mb-0 w-100"><small class="bg-secondary">&nbsp;</small></p>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+                <a href="" class="list-group-item list-group-item-action my-1" ng-repeat="video in videos.current" ng-class="{'active':video==currentVideo}" ng-hide="load_videos">
+                    
+                    <button type="button" class="btn-close float-end" aria-label="Remove" ng-click="removeVideo(video)"></button>
+
+                    <div class="d-flex w-100 justify-content-between" ng-click="setVideo(video)">
+                        <p class="mb-1">{[{ video.title }]}</p>
+                    </div>
+                    <div class="row g-0" ng-click="setVideo(video)">
+                        <div class="col-md-4 text-center my-1">
+                            <img ng-src="data:image/png;base64, {[{ video.thumbnails[0].content }]}" class="img-fluid rounded" width="{[{ video.thumbnails[0].width }]}" height="{[{ video.thumbnails[0].height }]}" alt="...">
+                        </div>
+                        <div class="col-md-8 ps-4" ng-click="setVideo(video)">
+                            <p class="mb-0"><small>{[{ video.faces }]} Faces</small></p>
+                            <p class="mb-0"><small>{[{ video.sequences }]} Sequences</small></p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="d-grid gap-2" ng-hide="video.download">
+                <button type="button" class="btn btn-outline-secondary btn-md text-center" ng-click="nextVideos()" ng-hide="videos.next.length==0">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+
+
+        </div>
+
+
+
+
+                
+
+        <!--  MAIN  -->
+
+
+
+
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-1 d-flex align-items-stretch">
+                    <button type="button" class="btn btn-outline-secondary btn-md text-center my-2" ng-click="previousSequences()" ng-class="{disabled:sequences.previous.length==0}" ng-hide="sequences.previous.length==0 || load_sequences">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                </div>
+
+
+
+                <div class="col-md-10 row">
+<!--                     <div class="my-2">
+                        <script type="text/ng-template" id="tagsTemplate.html">
+                        <a class="text-black m-2">
+                            <span class="my-2" ng-bind-html="match.label | uibTypeaheadHighlight:query.value"></span>
+                        </a>
+                        </script>
+                        <form class="form-search">
+                            <div class="input-group">
+                                <input class="form-control form-control-lg" placeholder="Add Tags" ng-model="selectedTag" ng-keypress="onNewTag($event)" uib-typeahead="t.value for t in tags | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-on-select="onSelectTag()" typeahead-template-url="tagsTemplate.html" >
+                                <span class="input-group-text bg-info border-info text-white" ng-click="openModalGroups()">
+                                    <i class="fa-solid fa-gears"></i>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+ -->
+
+
+
+
+                
+
+                <!--  SEQUENCES  -->
+
+
+
+                    {% for video in body.videos %}
+                    {% if forloop.counter <= 6 %}
+                    <div class="col-md-6" ng-show="load_sequences">
+                        <div class="card my-3">
+                            <div class="card-header">
+                                <p class="h5 bg-secondary">&nbsp;</p>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-md-4 text-center my-1">
+                                    <img ng-src="{% static 'Color_gray.svg' %}" class="img-fluid rounded" width="" height="" alt="Loading">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="card-text">
+                                            <p class="h5 card-title bg-secondary">&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="col-md-6" ng-repeat="seq in sequences.current" ng-hide="load_sequences">
+                        <div class="card my-1" ng-mouseenter="seq.animate()" ng-mouseleave="seq.stop()">
+                            <div class="card-header">
+                                <button type="button" class="btn-close float-end" aria-label="Close" ng-click="removeSequence(seq)"></button>
+
+                                <p class="h5 fs-6 my-0">Seq.{[{ seq.id }]} - {[{ seq.faces.length }]} faces</p>
+                                <p class="fs-6 m-0"><small>{[{ seq.startTime | date:"mm:ss.sss" }]} {[{ seq.endTime | date:"mm:ss.sss" }]}</small></p>
+                            </div>
+
+                            <div class="row g-0">
+                                <div class="col-md-4 text-center my-1">
+                                    <img ng-src="data:image/png;base64, {[{ seq.image_current }]}" class="img-fluid rounded" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="card-text">
+
+                                            <span class="badge rounded-pill m-1" 
+                                                ng-repeat="tag in currentTags" 
+                                                ng-click="setTagSequence(seq, tag)"
+                                                ng-class="{'bg-primary':tagInSequence(seq, tag), 'bg-light':!tagInSequence(seq, tag)}"
+                                                >
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <span class="px-0">{[{ tag }]}</span>
+                                                </div>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+ 
+                </div>
+
+
+
+                <div class="col-md-1 d-flex align-items-stretch">
+                    <button type="button" class="btn btn-outline-secondary btn-md text-center my-2" ng-click="nextSequences()" ng-class="{disabled:sequences.next.length==0}" ng-hide="sequences.next.length==0 || load_sequences">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

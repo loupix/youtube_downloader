@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+
+
+{% block header %}
+
+
+
+<div class="container p-5 mt-1 text-center">
+    <h1 class="my-3">{% trans 'Download history' %}</h1>
+</div>
+
+{% endblock %}
+
+
+{% block main %}
+
+
+<div class="container py-4">
+    <div class="row">
+
+        <div class="col-md-4" ng-repeat="download in downloaded" ng-init="video = download.video">
+            <div class="card my-3">
+                <div class="card-header">
+                    <span class="float-end">
+                        <i class="fa-solid fa-headphones fa-2x mx-2" ng-if="download.format_type=='Audio'"></i>
+                        <i class="fa-solid fa-video fa-2x mx-2" ng-if="download.format_type=='Video'"></i>
+                    </span>
+                    <p class="h5 fw-bold">{[{ video.channel.title }]}</p>
+                </div>
+                <div class="row g-0">
+                    <div class="col-md-4 text-center my-1">
+                        <img ng-src="data:image/png;base64, {[{ video.thumbnails[0].content }]}" class="img-fluid rounded" width="video.thumbnails[0].width" height="video.thumbnails[0].height" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="card-text row">
+                                <div class="col-md-12">
+                                    <p class="h5 card-title">
+                                        <a class="text-black" target="_blank" href="v/{[{ video.youtube_id }]}">{[{ video.title }]}</a>
+                                    </p>
+                                    <p class="card-text">
+
+
+                                        <div class="d-grid gap-2">
+                                            <button type="button" class="btn btn-error btn-md disabled" ng-show="download.status=='Deleted'">
+                                                <i class="fa-solid fa-trash"></i>
+                                                {% trans 'Deleted' %}
+                                            </button>
+                                        </div>
+
+
+                                        <div class="d-grid gap-2">
+                                            <button type="button" class="btn btn-warning btn-md disabled" ng-hide="download.status=='Finished' || download.status=='Deleted'">
+                                                <i class="fa-solid fa-cog fa-spin"></i>
+                                                {% trans 'Processing' %}
+                                            </button>
+                                        </div>
+                                        <div class="d-grid gap-2" ng-show="download.status=='Finished'">
+                                            <button type="button"
+                                                ng-click="downloading(download.path, download.path.split('/').pop())"
+                                                ng-class="{disabled:video.downloaded}" 
+                                                class="btn btn-primary btn-md">
+                                                <i class="fa-solid fa-download"></i>
+                                                {% trans 'Download' %}
+                                            </button>
+                                        </div>
+                                    </p>
+
+                                    <p class="card-text fs-6">
+                                        <i class="fa-regular fa-clock"></i>
+                                        {[{ video.duration }]}
+                                        <small class="text-muted ms-2">{[{ video.created_at | date : "d MMM, y" }]}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

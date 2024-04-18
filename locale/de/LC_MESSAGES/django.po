@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-03 16:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/templates/forgot.html:9 account/templates/login.html:11
+#: account/templates/login.html:36 account/templates/login.html:54
+#: app/templates/partials/navbar.html:89
+msgid "Login"
+msgstr ""
+
+#: account/templates/forgot.html:9 account/templates/login.html:11
+#: account/templates/login.html:69 account/templates/login.html:87
+#: account/templates/register.html:12 account/templates/register.html:46
+msgid "Registration"
+msgstr ""
+
+#: account/templates/login.html:111 app/templates/pages/home.html:347
+msgid "Copy then paste your youtube link"
+msgstr "Kopiere deinen YouTube-Link und füge ihn dann ein"
+
+#: account/templates/login.html:120 app/templates/pages/home.html:356
+msgid "Wait while we prepare the file"
+msgstr "Warten Sie, während wir die Datei vorbereiten"
+
+#: account/templates/login.html:129 app/templates/pages/home.html:365
+msgid "Download the file to your hard drive"
+msgstr "Lade die Datei auf deine Festplatte herunter"
+
+#: app/templates/pages/historique.html:11
+msgid "Download history"
+msgstr "Download-Verlauf"
+
+#: app/templates/pages/historique.html:49
+msgid "Deleted"
+msgstr ""
+
+#: app/templates/pages/historique.html:57 app/templates/pages/home.html:208
+#: app/templates/pages/home.html:448
+msgid "Processing"
+msgstr "Verarbeitung"
+
+#: app/templates/pages/historique.html:66 app/templates/pages/home.html:468
+#: app/templates/pages/home.html:602 app/templates/pages/top10.html:148
+#, fuzzy
+#| msgid "Download history"
+msgid "Download"
+msgstr "Download-Verlauf"
+
+#: app/templates/pages/home.html:32
+msgid "Your url is too short"
+msgstr "Ihre URL ist zu kurz"
+
+#: app/templates/pages/home.html:33
+msgid "Your url is not valid"
+msgstr "Ihre URL ist ungültig"
+
+#: app/templates/pages/home.html:34
+msgid "Your video is not found"
+msgstr "Ihr Video wurde nicht gefunden"
+
+#: app/templates/pages/home.html:119
+msgid "login"
+msgstr ""
+
+#: app/templates/pages/home.html:119
+msgid "registration"
+msgstr ""
+
+#: app/templates/pages/home.html:122
+msgid "18+"
+msgstr ""
+
+#: app/templates/pages/home.html:171
+msgid "Searching"
+msgstr ""
+
+#: app/templates/pages/home.html:217 app/templates/pages/home.html:610
+#: app/templates/pages/top10.html:156
+msgid "Video"
+msgstr ""
+
+#: app/templates/pages/home.html:240 app/templates/pages/home.html:631
+#: app/templates/pages/top10.html:161
+msgid "Audio"
+msgstr ""
+
+#: app/templates/pages/home.html:306
+msgid "loading"
+msgstr ""
+
+#: app/templates/pages/home.html:444 app/templates/pages/home.html:464
+msgid "Loading"
+msgstr ""
+
+#: app/templates/pages/home.html:453
+msgid "Retrieve in"
+msgstr ""
+
+#: app/templates/pages/home.html:514
+#, fuzzy
+#| msgid "Download history"
+msgid "last downloaded"
+msgstr "Download-Verlauf"
+
+#: app/templates/pages/home.html:519
+msgid "last published"
+msgstr ""
+
+#: app/templates/pages/home.html:524
+#, fuzzy
+#| msgid "Download history"
+msgid "most downloaded"
+msgstr "Download-Verlauf"
+
+#: app/templates/pages/home.html:529
+msgid "most views"
+msgstr ""
+
+#: app/templates/pages/statistique.html:10
+msgid "Downloads statistics"
+msgstr "Download-Statistiken"
+
+#: app/templates/pages/top10.html:12 app/templates/partials/navbar.html:70
+msgid "Top 10 Downloads"
+msgstr ""
+
+#: app/templates/pages/vocals.html:11
+msgid "Vocal Recognition"
+msgstr ""
+
+#: app/templates/partials/navbar.html:31 app/templates/partials/navbar.html:67
+msgid "Downloads"
+msgstr ""
+
+#: app/templates/partials/navbar.html:38 app/templates/partials/navbar.html:74
+msgid "History"
+msgstr "Verlauf"
+
+#: app/templates/partials/navbar.html:46
+msgid "Sign out"
+msgstr "Abmelden"
+
+#: app/templates/partials/navbar.html:79
+msgid "Face learning"
+msgstr ""
+
+#: app/templates/partials/navbar.html:84
+msgid "Vocal learning"
+msgstr ""
+
+#: facials/templates/index.html:12
+msgid "Face Learning"
+msgstr ""
+
+#: youtubeDownload/settings.py:314
+msgid "English"
+msgstr "Englisch"
+
+#: youtubeDownload/settings.py:315
+msgid "Russian"
+msgstr "Russisch"
+
+#: youtubeDownload/settings.py:316
+msgid "French"
+msgstr "Französisch"
+
+#: youtubeDownload/settings.py:317
+msgid "German"
+msgstr "Deutsch"
+
+#: youtubeDownload/settings.py:318
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: youtubeDownload/settings.py:319
+msgid "Italian"
+msgstr "Italienisch"
+
+#, fuzzy
+#~| msgid "History"
+#~ msgid "directory"
+#~ msgstr "Verlauf"
+
+#~ msgid "Percent"
+#~ msgstr "Prozent"
+
+#~ msgid "Speed"
+#~ msgstr "Geschwindigkeit"
+
+#~ msgid "Site statistics"
+#~ msgstr "Site-Statistiken"

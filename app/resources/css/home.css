@@ -1,0 +1,168 @@
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+/*    box-shadow:0 0 0 1px var(--bs-primary) inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 3px 6px 0 0 var(--bs-primary), 3px 6px 8px 1px rgba(255,255,255,0.5);
+*/}
+
+
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info);
+}
+
+.dropdown-menu, .dropdown-item{
+	background-color: var(--bs-white);
+}
+
+a.dropdown-item{
+	color: var(--bs-black);
+}
+
+a.dropdown-item.active, a.dropdown-item:hover{
+	background-color: var(--bs-info);
+	color: var(--bs-white);
+}
+
+
+.toast-info{background-color: var(--bs-light);}
+/* .toast-error{background-color: var(--bs-secondary);} */
+.toast-success{background-color: var(--bs-info);}
+.toast-warning{background-color: var(--bs-warning);}
+.toast-message{color: var(--bg-black);}
+
+
+.list-group-item.active{
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+
+.uib-typeahead-match.active{
+	background-color: var(--bs-light);
+}
+
+
+header.home{
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 25%;
+}
+
+
+header.history{
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 50%;
+}
+
+
+
+header.top{
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 75%;
+}
+
+
+
+header.video{
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 75%;
+}
+
+
+
+header.statistique{
+	color: var(--bs-white);
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 85%;
+}
+
+
+
+header.login, header.register{
+	color: var(--bs-white);
+	overflow: hidden;
+	background-image: url("/static/landscape.jpg");
+	background-size: cover;
+	background-position: 0 15%;
+}
+
+
+
+
+main{
+	height: 100%;
+}
+
+a{text-decoration: none;}
+
+p.bold{
+	font-weight: bold;
+}
+
+p.underline{
+	text-decoration: underline;
+}
+
+
+
+
+
+#home_videos .video_card,
+#head_videos .video_card{
+	opacity: 0.80;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+
+#home_videos .video_card:hover, 
+#head_videos .video_card:hover{
+	opacity: 1;
+}
+
+
+.card-header{
+	background: none;
+	border:none;
+}
+
+
+
+.badge.youtube{
+	color:var(--youtube-color);
+	background-color:var(--youtube-bg-color);
+}
+
+.badge.dailymotion{
+	color:var(--dailymotion-color);
+	background-color:var(--dailymotion-bg-color);
+}
+
+.badge.vimeo{
+	color:var(--vimeo-color);
+	background-color:var(--vimeo-bg-color);
+}
+
+.badge.facebook{
+	color:var(--facebook-color);
+	background-color:var(--facebook-bg-color);
+}
+
+.badge.instagram{
+	color:var(--instagram-color);
+	background-color:var(--instagram-bg-color);
+}
+
+.badge.odnoklassniki{
+	color:var(--odnoklassniki-color);
+	background-color:var(--odnoklassniki-bg-color);
+}
